@@ -1,6 +1,6 @@
 package hu.ponte.hr.services;
 
-import hu.ponte.hr.ImageRepository;
+import hu.ponte.hr.repository.ImageRepository;
 import hu.ponte.hr.controller.ImageMeta;
 import hu.ponte.hr.domain.Image;
 import hu.ponte.hr.domain.dto.UploadResponse;
@@ -24,6 +24,10 @@ public class ImageStore {
     public List<ImageMeta> getAll() {
         List<Image> images = imageRepository.findAll();
         return imageMapper.toMetas(images);
+    }
+
+    public String getUrlById(Long id) {
+        return imageRepository.findUrlById(id);
     }
 
     public void save(MultipartFile file) {

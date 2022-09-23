@@ -17,8 +17,15 @@ spring:
     generate-ddl: true
     open-in-view: false
 
-keys:
-  cloudinary:
-    cloud_name: djtt93ila
-    api_key: 467564182968418
-    api_secret: dWC8K1iDbu1qlMXXifViHTHD5w4
+cloudinary:
+  cloud_name: djtt93ila
+  api_key: 467564182968418
+  api_secret: dWC8K1iDbu1qlMXXifViHTHD5w4
+  max_size: 2097152
+  folder: ponte_hr
+  access_mode: authenticated
+  access_type: token
+  overwrite: false
+  type: authenticated
+  resource_type: auto
+  use_filename: true
