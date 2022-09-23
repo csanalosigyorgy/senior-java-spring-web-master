@@ -16,3 +16,9 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
     generate-ddl: true
     open-in-view: false
+
+keys:
+  cloudinary:
+    cloud_name: djtt93ila
+    api_key: 467564182968418
+    api_secret: dWC8K1iDbu1qlMXXifViHTHD5w4
