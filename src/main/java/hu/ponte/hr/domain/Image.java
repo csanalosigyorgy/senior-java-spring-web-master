@@ -28,4 +28,8 @@ public class Image {
     @Column(nullable = false)
     private long size;
 
+    @Lob
+    @Column(nullable = false)
+    private String signature;
+
 }

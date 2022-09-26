@@ -12,27 +12,29 @@ import java.util.stream.Collectors;
 @Component
 public class ImageMapper {
 
-    public Image toEntity(MultipartFile file, UploadResponse uploadedImage) {
+    public Image toEntity(MultipartFile file, UploadResponse uploadedImage, String signature) {
         return Image.builder()
                 .url(uploadedImage.getSecureUrl())
                 .name(file.getOriginalFilename())
                 .mimeType(file.getContentType())
                 .size(file.getSize())
+                .signature(signature)
                 .build();
     }
 
     public List<ImageMeta> toMetas(List<Image> images) {
         return images.stream()
-                .map(this::toMate)
+                .map(this::toMeta)
                 .collect(Collectors.toList());
     }
 
-    private ImageMeta toMate(Image image) {
+    private ImageMeta toMeta(Image image) {
         return ImageMeta.builder()
                 .id(image.getId().toString())
                 .name(image.getName())
                 .size(image.getSize())
                 .mimeType(image.getMimeType())
+                .digitalSign(image.getSignature())
                 .build();
     }
 }

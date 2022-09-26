@@ -28,7 +28,7 @@ public class ImagesController {
             String url = imageStore.getUrlById(Long.valueOf(id));
             response.sendRedirect(url);
         } catch (Exception e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
     }
 

@@ -1,9 +1,9 @@
 package hu.ponte.hr.services;
 
-import hu.ponte.hr.repository.ImageRepository;
 import hu.ponte.hr.controller.ImageMeta;
 import hu.ponte.hr.domain.Image;
 import hu.ponte.hr.domain.dto.UploadResponse;
+import hu.ponte.hr.repository.ImageRepository;
 import hu.ponte.hr.services.mapper.ImageMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +18,7 @@ import java.util.List;
 public class ImageStore {
 
     private final ImageUploadService imageUploadService;
+    private final SignService signService;
     private final ImageMapper imageMapper;
     private final ImageRepository imageRepository;
 
@@ -31,8 +32,9 @@ public class ImageStore {
     }
 
     public void save(MultipartFile file) {
+        String signature = signService.sign(file);
         UploadResponse uploadedImage = imageUploadService.uploadImage(file);
-        Image image = imageMapper.toEntity(file, uploadedImage);
+        Image image = imageMapper.toEntity(file, uploadedImage, signature);
         imageRepository.save(image);
     }
 }

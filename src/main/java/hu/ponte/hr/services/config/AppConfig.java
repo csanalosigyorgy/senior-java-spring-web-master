@@ -13,6 +13,7 @@ import java.util.Locale;
  */
 @Configuration
 public class AppConfig {
+
     @Bean
     public LocaleResolver localeResolver() {
         return new FixedLocaleResolver(Locale.ENGLISH);

@@ -29,3 +29,9 @@ cloudinary:
   type: authenticated
   resource_type: auto
   use_filename: true
+
+signature:
+  algorithm: SHA256withRSA
+  key_type: RSA
+  path:
+    private_key: config/keys/key.private
